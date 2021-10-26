@@ -1,0 +1,37 @@
+.note {
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: 'Reenie Beanie';
+  margin: 0.6em;
+  list-style: none;
+}
+.note div {
+  text-decoration: none;
+  color: #000;
+  background-color: #3b2c172f;
+  display: block;
+  width: 9em;
+  padding: 1em;
+  box-shadow: 5px 5px 7px rgb(33, 33, 33);
+}
+.note div:hover {
+  transform: rotate(-6deg);
+}
+
+.note:nth-child(even) {
+  transform: rotate(4deg);
+  position: relative;
+  top: 5px;
+}
+
+.note:nth-child(3n) {
+  transform: rotate(-3deg);
+  position: relative;
+  top: -5px;
+}
+
+.note:nth-child(5n) {
+  transform: rotate(5deg);
+  position: relative;
+  top: -10px;
+}
