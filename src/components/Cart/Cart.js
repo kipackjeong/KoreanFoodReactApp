@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CartItem from './CartItem'
+import Table from '../UI/Table'
 import styles from './Cart.module.css'
 import cartIcon from '../../assets/icons/cart-icon.png'
 import Button from '../UI/Button'
@@ -23,36 +24,28 @@ const Cart = (props) => {
       <div className={styles['cart-icon-container']}>
         <img src={cartIcon} alt="cart icon" />
       </div>
-      <div className={styles['table-container']}>
-        {cartLength === 0 ? (
-          <div>
-            <h1> The cart is empty </h1>
-          </div>
-        ) : (
-          <table>
-            <thead>
-              <tr>
-                <th> </th>
-                <th> NAME</th>
-                <th> QTY </th>
-                <th> PRICE </th>
+
+      {cartLength === 0 ? (
+        <div>
+          <h1> The cart is empty </h1>
+        </div>
+      ) : (
+        <div className={styles['table-container']}>
+          <Table
+            heads={['NAME', 'QTY', 'PRICE']}
+            foots={[totalNumber, totalPrice]}
+          >
+            {Object.keys(props.cart).map((meal, i) => (
+              <tr key={i}>
+                <CartItem item={props.cart[meal]}></CartItem>
               </tr>
-            </thead>
-            <tbody>
-              {Object.keys(props.cart).map((meal, i) => (
-                <tr key={i}>
-                  <CartItem item={props.cart[meal]}></CartItem>
-                </tr>
-              ))}
-              <tr>
-                <td></td>
-                <td>Total</td>
-                <td>{totalNumber}</td>
-                <td>{`$${totalPrice.toFixed(2)}`}</td>
-              </tr>
-            </tbody>
-          </table>
-        )}
+            ))}
+          </Table>
+        </div>
+      )}
+
+      <div>
+        <h3>Total Price: {totalPrice} </h3>
       </div>
       <div className={styles['button-container']}>
         {cartLength === 0 ? (

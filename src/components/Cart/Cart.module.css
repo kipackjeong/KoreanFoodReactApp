@@ -16,6 +16,7 @@
 }
 .cart tr {
   list-style: none;
+  height: 5rem;
 }
 .cart th {
   width: 25%;
@@ -26,6 +27,7 @@
 }
 
 .cart table {
+  margin-top: 0;
   width: 100%;
 }
 
