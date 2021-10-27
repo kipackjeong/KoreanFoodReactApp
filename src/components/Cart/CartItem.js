@@ -9,7 +9,9 @@ const CartItem = (props) => {
       </td>
       <td>{props.item.name}</td>
       <td> {props.item.amount}</td>
-      <td>{'$' + props.item.price * props.item.amount}</td>
+      <td>
+        {'$' + props.item.price * props.item.amount} <input type="number" />
+      </td>
     </>
   )
 }

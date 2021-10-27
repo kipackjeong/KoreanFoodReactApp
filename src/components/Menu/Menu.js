@@ -19,17 +19,16 @@ const dummyMenu = [
   { name: 'Kimchi Soup', price: 11.99, img: kimchiSoupImg },
 ]
 const Menu = (props) => {
+  const mealsList = (
+    <ul className={styles.menu}>
+      {dummyMenu.map((meal) => (
+        <Meal key={meal.name} meal={meal} onAddClick={props.onAddClick}></Meal>
+      ))}
+    </ul>
+  )
   return (
     <Card>
-      <ul className={styles.menu}>
-        {dummyMenu.map((meal) => (
-          <Meal
-            key={meal.name}
-            meal={meal}
-            onAddClick={props.onAddClick}
-          ></Meal>
-        ))}
-      </ul>
+      <ul className={styles.menu}>{mealsList}</ul>
     </Card>
   )
 }
