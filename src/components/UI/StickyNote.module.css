@@ -16,6 +16,7 @@
 }
 .note div:hover {
   transform: rotate(-6deg);
+  transition: 200ms;
 }
 
 .note:nth-child(even) {

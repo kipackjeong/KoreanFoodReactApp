@@ -4,6 +4,7 @@ import StickyNote from '../../UI/StickyNote'
 import MealForm from './MealForm/MealForm'
 const Meal = (props) => {
   const onAddClickHandler = (event) => {
+    props.meal.amount = parseInt(event.target.amount.value)
     props.onAddClick(event, props.meal)
   }
   return (

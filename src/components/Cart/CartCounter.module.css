@@ -1,0 +1,40 @@
+.counter {
+  position: absolute;
+  top: 2rem;
+  left: 3.5rem;
+  z-index: 3;
+
+  height: 1.1rem;
+  width: 1.1rem;
+
+  color: white;
+  background-color: rgba(255, 50, 50, 0.973);
+  border-radius: 50%;
+}
+.counter span {
+  position: relative;
+  bottom: 0.25rem;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.bump {
+  animation: bump 400ms ease-out;
+}
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.2);
+  }
+  30% {
+    transform: scale(1.6);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,5 +1,27 @@
+.cartItem {
+}
 .img {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+}
+
+span {
+  height: 2.5rem;
+}
+
+.form {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+button {
+  background-color: white;
+  margin: 0.4rem;
+  color: black;
+}
+.removeBtn {
+  color: rgb(196, 62, 62);
+  border: 2px solid rgb(196, 62, 62);
 }

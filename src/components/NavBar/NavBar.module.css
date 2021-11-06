@@ -1,0 +1,15 @@
+.cart-btn-container {
+  position: fixed;
+  right: 10%;
+  z-index: 12;
+}
+
+.cart-btn-container:hover {
+  transform: scale(1.2);
+  transition: linear 300ms;
+}
+.cart-btn {
+  background-color: inherit;
+  box-shadow: none;
+  border: none;
+}

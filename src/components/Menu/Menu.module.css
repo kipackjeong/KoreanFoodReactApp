@@ -1,8 +1,9 @@
 .menu {
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
   margin-top: 5rem;
+  padding-inline-start: 0;
 }

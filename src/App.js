@@ -1,61 +1,51 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import './App.css'
 import Header from './components/Layout/Header'
 import Main from './components/Layout/Main'
 import Menu from './components/Menu/Menu'
 import Cart from './components/Cart/Cart'
 import Modal from './components/UI/Modal'
+import CartContext from './store/cart-context'
+import CartProvider from './store/CartProvider'
+import NavBar from './components/NavBar/NavBar'
 function App() {
   const [cartClicked, setCartClicked] = useState(false)
-  const [cart, setCart] = useState({})
+  const cartCtx = useContext(CartContext)
 
   const onCartClickedHandler = (event) => {
     setCartClicked(cartClicked ? false : true)
   }
-  const onAddClickHandler = (event, meal) => {
-    event.preventDefault()
-    const amount = parseInt(event.target.amount.value)
-    const mealName = meal.name
-    if (!cart[mealName]) {
-      cart[mealName] = meal
-    }
-
-    cart[mealName].amount = cart[mealName].amount
-      ? cart[mealName].amount + amount
-      : amount
-
-    setCart(cart)
-  }
-
   const onCancelHandler = () => {
     setCartClicked(false)
   }
   const onOrderHandler = () => {
     console.log(
       'ordering ' +
-        Object.keys(cart)
-          .map((item) => `${cart[item].amount} ${cart[item].name}`)
+        Object.keys(cartCtx.items)
+          .map(
+            (item) =>
+              `${cartCtx.items[item].amount} ${cartCtx.items[item].name}`,
+          )
           .join(', '),
     )
-    setCart({})
     setCartClicked(false)
   }
 
   return (
     <div className="App">
-      <Header onCartClicked={onCartClickedHandler} />
-      {cartClicked && (
-        <Modal>
-          <Cart
-            onCancel={onCancelHandler}
-            onOrder={onOrderHandler}
-            cart={cart}
-          ></Cart>
-        </Modal>
-      )}
-      <Main>
-        <Menu onAddClick={onAddClickHandler}></Menu>
-      </Main>
+      <CartProvider>
+        <Header>
+          <NavBar onCartClicked={onCartClickedHandler} />
+        </Header>
+        {cartClicked && (
+          <Modal>
+            <Cart onCancel={onCancelHandler} onOrder={onOrderHandler}></Cart>
+          </Modal>
+        )}
+        <Main>
+          <Menu></Menu>
+        </Main>
+      </CartProvider>
     </div>
   )
 }
